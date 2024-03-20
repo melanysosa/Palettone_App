@@ -1,7 +1,9 @@
 import React from 'react';
 import ListItem from './ListItem';
+import Palettone from './Palettone';
+import Button from './Button';
 
-const DisplayImage = ({ uploadedImage, colorPalette }) => {
+const DisplayImage = ({ uploadedImage, colorPalette, uploadImage }) => {
 	const toHex = (rgb) => {
 		let hex = Number(rgb).toString(16);
 		if (hex.length < 2) {
@@ -10,26 +12,45 @@ const DisplayImage = ({ uploadedImage, colorPalette }) => {
 		return hex;
 	};
 	return (
-		<div>
-			<div className='flex h-80 w-full'>
+		<div className='flex '>
+			<div className='flex flex-col '>
 				{uploadedImage ? (
-					<img src={uploadedImage} alt='uploaded' />
+					<div className='w-[560px] h-[610px]'>
+						<img
+							className='object-cover w-[490px] h-[460px] rounded-3xl  '
+							src={uploadedImage}
+							alt='uploaded'
+						/>
+					</div>
 				) : (
-					<p>Put an Image here ...</p>
+					<div >
+						<Palettone />
+					</div>
 				)}
+				<Button
+					htmlFor='file'
+					type='file'
+					id='file'
+					handleChange={uploadImage}
+				/>
 			</div>
 			{colorPalette && (
-				<ul>
-					{colorPalette.map((color, index) => {
-						const rgb = `rgb(${color.join(',')})`;
+				<div className='flex flex-col  mx-20'>
+					<p className='flex text-3xl font-medium mb-10 items-center'>
+						Here's your color palette!
+					</p>
+					<ul className=''>
+						{colorPalette.map((color, index) => {
+							const rgb = `rgb(${color.join(',')})`;
 
-						const hex = `# ${toHex(color[0])}${toHex(color[1])}${toHex(
-							color[2]
-						)}`;
-						console.log(rgb, hex);
-						return <ListItem key={index} rgb={rgb} hex={hex} />;
-					})}
-				</ul>
+							const hex = `# ${toHex(color[0])}${toHex(color[1])}${toHex(
+								color[2]
+							)}`;
+
+							return <ListItem key={index} rgb={rgb} hex={hex} />;
+						})}
+					</ul>
+				</div>
 			)}
 		</div>
 	);
