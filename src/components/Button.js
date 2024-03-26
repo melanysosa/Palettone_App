@@ -5,7 +5,7 @@ const Button = ({ handleChange, type, id, htmlFor }) => {
 	return (
 		<div>
 			<label
-				className='flex bg-[#0C0D0D] text-[#9F9CDC] w-[490px] h-[60px] rounded-3xl text-xl items-center justify-center font-medium -mt-20'
+				className='flex  bg-[#0C0D0D] text-[#9F9CDC] w-[260px] h-[60px] sm:w-[490px]  rounded-3xl text-xl sm:text-2xl items-center justify-center font-medium sm:mt-14 md:-mt-20  my-10'
 				htmlFor={htmlFor}
 			>
 				Upload Image

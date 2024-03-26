@@ -2,9 +2,7 @@
 import { useState } from 'react';
 import DisplayImage from '../components/DisplayImage';
 import ColorThief from 'colorthief';
-import LogoPalettone from '@/components/Logo/LogoPalettone';
-import Link from 'next/link';
-import { LogoMobilePalettone } from '@/components/Logo/LogoMobilePalettone';
+import Nav from '../components/Nav';
 
 export default function Home() {
 	const [uploadedImage, setUploadedImage] = useState(null);
@@ -37,23 +35,16 @@ export default function Home() {
 		window.location.reload();
 	};
 	return (
-		<main className='flex flex-col '>
-			<div className='flex h-[100px] bg-[#0C0D0D] '>
-				<div
-					onClick={handleClick}
-					className='flex items-center  sm:ml-10 sm:px-14 px-16'
-				>
-					<LogoPalettone />
-					<LogoMobilePalettone />
-				</div>
-			</div>
-			<div className=' mb-52 m-32 '>
+		<main  >
+		<Nav handleClick={handleClick} />
+	
 				<DisplayImage
 					uploadedImage={uploadedImage}
 					colorPalette={colorPalette}
 					uploadImage={uploadImage}
+					
 				/>
-			</div>
+		
 		</main>
 	);
 }

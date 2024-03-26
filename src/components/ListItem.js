@@ -10,23 +10,26 @@ const ListItem = ({ rgb, hex }) => {
 	return (
 		<li
 			style={{ background: rgb }}
-			onClick={(e) => {
-				copyColorClick(e);
-				setCopied(true);
-				setTimeout(() => {
-					setCopied(false);
-				}, 1000);
-			}}
-			className='rounded-xl drop-shadow-lg shadow-inner '
+			className=' flex rounded-xl drop-shadow-lg shadow-inner w-[260px] h-[100px]  sm:h-[70px] sm:w-[500px] my-7 items-end text-lg font-medium'
 		>
-			<div
-				className='flex my-6 rounded-xl w-[500px] h-[70px] hover:bg-black/20
-				'
-			>
-				<div className='opacity-0 hover:opacity-100 text-white flex items-center  px-9 '>
-					{copied ? 'Copied!' : hex}
+			<div className='flex bg-black/20 sm:bg-transparent sm:hover:bg-black/20 sm:w-[500px] 
+			sm:h-[70px] rounded-b-xl sm:rounded-xl w-[260px] h-14 '>
+				<div className='md:opacity-0 sm:hover:opacity-100 opacity-100 text-white flex items-center  px-8 '>
+					<div
+						onClick={(e) => {
+							copyColorClick(e);
+							setCopied(true);
+							setTimeout(() => {
+								setCopied(false);
+							}, 1000);
+						}}
+						className='hidden md:block md:w-80'
+					>
+						{copied ? 'Copied!' : hex}
+					</div>
+					<div className='block md:hidden  sm:w-80 '>{hex}</div>
 					{
-						<p className='ml-80'>
+						<p className='ml-20'>
 							<BiCopy className='w-6 h-6' />
 						</p>
 					}
